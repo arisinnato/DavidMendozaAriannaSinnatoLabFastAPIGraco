@@ -1,34 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio - Comunidad de Artesanos{% endblock %}
+{% block title %}Inicio Artesano{% endblock %}
 
 {% block content %}
-    <section>
-        <h1>Bienvenidos a la Comunidad de Artesanos</h1>
-        <p>Explora la rica tradición de nuestras artesanías y encuentra productos únicos hechos a mano por talentosos artesanos.</p>
-        
-        <div class="productos-destacados">
-            <h2>Productos Destacados</h2>
-            <div class="productos">
-                {% for producto in productos %}
-                    <div class="producto">
-                        <img src="{{ url_for('static', path=producto.imagen) }}" alt="{{ producto.nombre }}">
-                        <h3>{{ producto.nombre }}</h3>
-                        <p>{{ producto.descripcion }}</p>
-                        <p><strong>Precio:</strong> {{ producto.precio }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        
-        <div class="info-comunidad">
-            <h2>Sobre Nuestra Comunidad</h2>
-            <p>Somos una comunidad de artesanos dedicados a preservar y promover las tradiciones y técnicas artesanales transmitidas de generación en generación. Nuestro objetivo es compartir nuestra pasión y habilidades con el mundo, ofreciendo productos de alta calidad y valor cultural.</p>
-        </div>
-        
-        <div class="registro-inicio-sesion">
-            <h2>Únete a Nosotros</h2>
-            <p>Para ver más productos y realizar compras, <a href="{{ url_for('show_register_form') }}">regístrate</a> o <a href="{{ url_for('show_login_form') }}">inicia sesión</a>.</p>
-        </div>
-    </section>
+<div class="home-artesano">
+    <h2>Bienvenido, {{ user.name }}!</h2>
+    <p>Aquí puedes gestionar tus productos y ver tus ventas.</p>
+    <a href="{{ url_for('add_product') }}" class="btn">Agregar Producto</a>
+    <a href="{{ url_for('view_sales') }}" class="btn">Ver Ventas</a>
+</div>
 {% endblock %}
+
