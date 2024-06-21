@@ -1,13 +1,39 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Artesanías</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuarios/registrar">Registrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-{% block title %}Inicio - Bienvenido{% endblock %}
+    <!-- Contenido principal -->
+    <div class="container mt-5">
+        <h1>Bienvenido a nuestra plataforma de Artesanías</h1>
+        <p>Explora nuestra amplia gama de productos artesanales y apoya a nuestros talentosos artesanos.</p>
+    </div>
 
-{% block content %}
-<div class="home-no-logged">
-    <h2>Bienvenido a Mi Comunidad de Artesanos</h2>
-    <p>Descubre y compra productos artesanales únicos de nuestra comunidad.</p>
-    <a href="{{ url_for('register') }}" class="btn">Regístrate</a>
-    <a href="{{ url_for('login') }}" class="btn">Inicia Sesión</a>
-</div>
-{% endblock %}
-
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &copy; 2024 Artesanías. Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>

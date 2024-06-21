@@ -1,8 +1,12 @@
 from sqlalchemy.orm import Session
 from schemas import Respuesta
 from une import transformar
+from sqlalchemy.orm import Session
 import tipo_usuarios.models as models
 import tipo_usuarios.schemas as schemas
+
+def listar_tipos_usuarios(db: Session): 
+    return db.query(models.Tipo_Usuario).all()
 
 def crear_tipo_usuario(db: Session, tipo_usuario: schemas.Tipo_UsuarioCrear):
     db_tipo_usuario = models.Tipo_Usuario(
@@ -22,9 +26,6 @@ def crear_tipo_usuario(db: Session, tipo_usuario: schemas.Tipo_UsuarioCrear):
         data = tipo_usuario_nuevo
     )
     return respuesta
-
-def listar_tipos_usuarios(db: Session): 
-    return db.query(models.Tipo_Usuario).all()
 
 def buscar_tipo_usuario(db: Session, id: int): 
     tipo_usuario = db.query(models.Tipo_Usuario).filter(models.Tipo_Usuario.id == id).first()
