@@ -2,14 +2,13 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from schemas import Respuesta
 from database import SessionLocal, engine
-import tipo_usuarios.models as models 
-import tipo_usuarios.schemas as schemas
-import tipo_usuarios.service as service
+import tipos_usuario.models as models 
+import tipos_usuario.schemas as schemas
+import tipos_usuario.service as service
 
 models.Base.metadata.create_all(bind=engine)
 
 router = APIRouter()
-
 
 def get_db():
     db = SessionLocal()

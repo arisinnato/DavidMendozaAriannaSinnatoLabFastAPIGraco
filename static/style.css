@@ -1,0 +1,109 @@
+/* Estilos generales */
+
+body {
+    font-family: 'Roboto', sans-serif; /* Utilizando una fuente de Materialize */
+    background-color: #f5f5f5; /* Color de fondo suave */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding-top: 20px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+/* Formularios */
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form fieldset {
+    border: none;
+}
+
+form legend {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+form p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+form a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Mensajes de éxito y error */
+
+.success {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.error {
+    color: #F44336;
+    font-weight: bold;
+}
+
+/* Estilos específicos para componentes */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+}
+
+/* Estilos específicos para Materialize */
+
+.material-icons {
+    font-size: 24px;
+    vertical-align: middle;
+}
