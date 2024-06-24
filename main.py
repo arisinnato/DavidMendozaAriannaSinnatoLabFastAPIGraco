@@ -3,12 +3,9 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
-
 from tipo_usuarios import router as tipos_usuario
 from usuarios import router as usuarios
 from usuarios.router import router as usuarios_router
-
-
 
 
 app = FastAPI()
