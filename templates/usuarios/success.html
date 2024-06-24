@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="row col s6">
+            <h1>{{ success_msg }} {{ nombre_completo }}</h1>
+        </div>
+    </div>
+    <div class="row col s6">
+        <div class="h3">
+            <a href="{{ path_route }}"> {{ path_msg }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
