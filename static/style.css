@@ -1,11 +1,13 @@
 
 
 body {
-    font-family: 'Roboto', sans-serif; 
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
     background-color: #f5f5f5; 
     margin: 0;
     padding: 0;
 }
+
 
 main {
     padding-top: 20px;
@@ -106,4 +108,23 @@ h1, h2, h3, h4, h5, h6 {
 .material-icons {
     font-size: 24px;
     vertical-align: middle;
+}
+
+
+/* IMAGENES*/
+
+.cabecera{
+    display: flex;
+    background-color: var(--bg-gray-main);
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.062);
+    /*height: 3rem;*/
+    margin-left: 30rem;
+    margin-top: 0.8rem;
+}
+
+.img_principal{
+    align-items: center;
 }
