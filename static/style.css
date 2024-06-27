@@ -1,130 +1,170 @@
+/* Archivo: /static/style.css */
 
-
+/* General */
 body {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    background-color: #f5f5f5; 
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
 }
 
-
-main {
-    padding-top: 20px;
-}
-
-.container {
-    margin-top: 50px;
-}
-
-/* Formularios */
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
+/* Navbar */
+.navbar {
+    padding: 1rem;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #ddd;
 }
 
-.titulo_Registro{
-    border: none;
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: #333 !important;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+/* Header */
+.img {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.cabecera {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cabecera img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+/* Main section */
+.main-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    margin-top: -50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.main-section p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+
+/* Footer */
+footer {
+    background-color: #fff;
+    padding: 1rem 0;
+    border-top: 1px solid #ddd;
+}
+
+footer .p-3 {
+    margin: 0;
+}
+
+/* Modal */
+.modal-body {
+    padding: 1.5rem;
+}
+
+/* Formulario de registro */
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 form legend {
     font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
 }
 
 form label {
     display: block;
-    margin-bottom: 10px;
-    color: #555;
+    margin-bottom: 1rem;
 }
 
-form input[type="text"],
-form input[type="password"],
-form input[type="date"],
-form input[type="number"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
+form label span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+form input {
+    width: 100%;
+    padding: 0.5rem;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: 1rem;
 }
 
-form button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+form button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-form button[type="submit"]:hover {
-    background-color: #45a049;
+form button:hover {
+    background-color: #0056b3;
 }
 
 form p {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #777;
-}
-
-form a {
-    color: #2196F3;
-    text-decoration: none;
-}
-
-form a:hover {
-    text-decoration: underline;
-}
-
-/* Mensajes de éxito y error */
-
-.success {
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.error {
-    color: #F44336;
-    font-weight: bold;
-}
-
-/* Estilos específicos para componentes */
-
-h1, h2, h3, h4, h5, h6 {
-    color: #333;
-}
-
-/* Estilos específicos para Materialize */
-
-.material-icons {
-    font-size: 24px;
-    vertical-align: middle;
-}
-
-
-/* IMAGENES*/
-
-.cabecera{
-    /*display: flex;*/
-    background-color: var(--bg-gray-main);
-    display: flex;
-    /* justify-content: space-between; */
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.062);
-    /*height: 3rem;*/
-    margin-left: 30rem;
-    margin-top: 0.8rem;
-    max-width: 500px;
     text-align: center;
-    justify-content: center;
-    box-sizing: border-box;
+    margin-top: 1rem;
+}
+
+form p a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+form p a:hover {
+    color: #0056b3;
 }
