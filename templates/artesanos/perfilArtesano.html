@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Artesano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Artesanías</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/perfil">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pedidos">Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/encargos">Encargos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/productos/registrar">Registrar Producto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <h1 class="mb-4">Perfil de Artesano</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Nombre del Artesano</h5>
+                <p class="card-text">Correo: <span id="correo">correo@ejemplo.com</span></p>
+                <p class="card-text">Nombres: <span id="nombres">Juan</span></p>
+                <p class="card-text">Apellidos: <span id="apellidos">Pérez</span></p>
+                <p class="card-text">Dirección: <span id="direccion">123 Calle Falsa</span></p>
+                <p class="card-text">Fecha de Nacimiento: <span id="nacimiento">01/01/1980</span></p>
+                <a href="/perfil/editar" class="btn btn-primary">Editar Perfil</a>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" value="" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" value="" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &copy; 2024 Artesanías. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

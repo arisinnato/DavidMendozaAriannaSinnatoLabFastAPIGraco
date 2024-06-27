@@ -10,14 +10,6 @@ from compras import router as compras
 from estado_de_compra import router as estados_compras
 from tipo_compra import router as tipos_compra
 
-
-
-
-
-
-
-
-
 from usuarios.service import RequiresLoginException
 
 from fastapi.staticfiles import StaticFiles

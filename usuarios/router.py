@@ -1,6 +1,7 @@
 from typing import Union
 from fastapi import APIRouter, Depends, Request, Form, HTTPException, status
 from fastapi.responses import HTMLResponse, RedirectResponse
+from flask import request
 from sqlalchemy.orm import Session
 from fastapi.templating import Jinja2Templates
 from database import SessionLocal, engine
@@ -82,7 +83,30 @@ def iniciar_sesion(cedula: str = Form(...), contraseña: str = Form(...), db: Se
               'tipo_usuario_id': usuario.tipo_id},
         expires_delta=tiempo_expiracion
     )
-    return RedirectResponse(url='/', status_code=status.HTTP_303_SEE_OTHER)
+    request.session['user_id'] = usuario.id
+    request.session['user_type'] = usuario.tipo_id
+    
+    if usuario.tipo_id == 1:
+        return RedirectResponse(url='/templates/HArtesano.html', status_code=status.HTTP_303_SEE_OTHER)
+    elif usuario.tipo_id == 2:
+        return RedirectResponse(url='/templates/HCliente.html', status_code=status.HTTP_303_SEE_OTHER)
+    else:
+        return RedirectResponse(url='/', status_code=status.HTTP_303_SEE_OTHER)
+
+
+@router.get('/home/artesano', response_class=HTMLResponse)
+def home_artesano(request: Request):
+    user_type = request.session.get('user_type')
+    if user_type == 1:
+        return templates.TemplateResponse("HArtesano.html", {"request": request})
+    return RedirectResponse(url='/usuarios/iniciarsesion.html', status_code=status.HTTP_303_SEE_OTHER)
+
+@router.get('/home/cliente', response_class=HTMLResponse)
+def home_cliente(request: Request):
+    user_type = request.session.get('user_type')
+    if user_type == 2:
+        return templates.TemplateResponse("HCliente.html", {"request": request})
+    return RedirectResponse(url='/usuarios/iniciarsesion.html', status_code=status.HTTP_303_SEE_OTHER)
 
 
 @router.delete('/usuario/{cedula}', response_model=schemas.Usuario)
