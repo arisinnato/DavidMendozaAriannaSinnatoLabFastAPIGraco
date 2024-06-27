@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Archivo: /static/style.css */
 
 /* General */
@@ -108,17 +109,144 @@ form {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+=======
+/* style.css */
+
+/* Reset y estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: #a7a2a2;
+    color: #fff;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header .logo-container {
+    display: flex;
+    align-items: end;
+}
+
+header .logo-container img {
+    height: 10px; /* Ajustar tamaño del logo */
+    border-radius: 50%; /* Logo redondeado */
+}
+
+header .logo-container h1 {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+header input[type="search"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+header .user-actions {
+    display: flex;
+    align-items: center;
+}
+
+header .user-actions button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+header .user-actions button:hover {
+    background-color: #45a049;
+}
+
+header .user-actions a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/* Navegación */
+nav {
+    background-color: #555;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #777;
+    border-radius: 5px;
+}
+
+/* Contenido principal */
+main {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Formularios */
+form {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+form fieldset {
+    border: none;
+>>>>>>> 3de6dc9 (Avances David)
 }
 
 form legend {
     font-size: 1.5rem;
+<<<<<<< HEAD
     margin-bottom: 1rem;
     text-align: center;
     font-weight: 700;
+=======
+    color: #333;
+    margin-bottom: 10px;
+>>>>>>> 3de6dc9 (Avances David)
 }
 
 form label {
     display: block;
+<<<<<<< HEAD
     margin-bottom: 1rem;
 }
 
@@ -167,4 +295,87 @@ form p a {
 
 form p a:hover {
     color: #0056b3;
+=======
+    margin-bottom: 8px;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="date"],
+form input[type="number"],
+form input[type="search"],
+form textarea,
+form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+form p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+form a {
+    color: #2196F3;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Mensajes de éxito y error */
+.success {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.error {
+    color: #F44336;
+    font-weight: bold;
+}
+
+/* Estilos específicos para componentes */
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+}
+
+header img {
+    border-radius: 50%;
+    width: 20%;
+}
+
+footer img {
+    border-radius: 50%;
+    width: 4%;
+>>>>>>> 3de6dc9 (Avances David)
 }

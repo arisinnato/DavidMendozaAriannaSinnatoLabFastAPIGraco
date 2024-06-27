@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar usuario</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="/static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +31,17 @@
     </nav>
     <form action="/registrar" method="post">
             <legend class="titulo_Registro">Registrar usuario</legend>
+=======
+
+    <!-- Agregar el enlace al CSS personalizado -->
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <form action="/registrar" method="post">
+        <fieldset>
+            <legend>Registrar usuario</legend>
+>>>>>>> 3de6dc9 (Avances David)
             <label for="cedula">
                 <span>Cédula</span>
                 <input type="text" name="cedula" placeholder="Cedula" required>
@@ -70,12 +82,22 @@
                 <input type="password" name="contraseña" placeholder="contraseña" required>
             </label>
     
+<<<<<<< HEAD
             <button type="submit" href="/templates/usuarios/iniciarsesion.html">Registrar</button>
 
             <p>
                 ¿Ya tienes cuenta? 
                 <a href="templates/usuarios/iniciar_sesion">¡Inicia sesión!</a>
             </p>
+=======
+            <button type="submit">Registrar</button>
+
+            <p>
+                ¿Ya tienes cuenta? 
+                <a href="/iniciar_sesion">¡Inicia sesión!</a>
+            </p>
+        </fieldset>
+>>>>>>> 3de6dc9 (Avances David)
     </form>
 </body>
 </html>

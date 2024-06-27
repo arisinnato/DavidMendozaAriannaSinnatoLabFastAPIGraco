@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 from typing import Union
 from fastapi import APIRouter, Depends, Request, Form, HTTPException, status
 from fastapi.responses import HTMLResponse, RedirectResponse
 from flask import request
+=======
+"""from typing import Union
+from fastapi import APIRouter, Depends, Request, Form, HTTPException, status
+from fastapi.responses import HTMLResponse, RedirectResponse
+>>>>>>> 3de6dc9 (Avances David)
 from sqlalchemy.orm import Session
 from fastapi.templating import Jinja2Templates
 from database import SessionLocal, engine
@@ -83,6 +89,7 @@ def iniciar_sesion(cedula: str = Form(...), contraseña: str = Form(...), db: Se
               'tipo_usuario_id': usuario.tipo_id},
         expires_delta=tiempo_expiracion
     )
+<<<<<<< HEAD
     request.session['user_id'] = usuario.id
     request.session['user_type'] = usuario.tipo_id
     
@@ -107,8 +114,130 @@ def home_cliente(request: Request):
     if user_type == 2:
         return templates.TemplateResponse("HCliente.html", {"request": request})
     return RedirectResponse(url='/usuarios/iniciarsesion.html', status_code=status.HTTP_303_SEE_OTHER)
+=======
+    return RedirectResponse(url='/', status_code=status.HTTP_303_SEE_OTHER)
+>>>>>>> 3de6dc9 (Avances David)
 
 
 @router.delete('/usuario/{cedula}', response_model=schemas.Usuario)
 def borrar_usuario(cedula : str, db: Session = Depends(get_db)): 
+<<<<<<< HEAD
     return service.eliminar_usuario(db=db, cedula=cedula)
+=======
+    return service.eliminar_usuario(db=db, cedula=cedula)"""
+
+
+
+#############################################################################################
+
+from fastapi import APIRouter, Depends, HTTPException, status, Request, Form
+from datetime import timedelta
+from sqlalchemy.orm import Session
+from database import SessionLocal, engine 
+from typing import Annotated
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
+from fastapi.templating import Jinja2Templates
+from datetime import datetime
+from fastapi.responses import RedirectResponse, HTMLResponse, Response
+
+from schemas import Token, Respuesta
+
+import usuarios.models as models 
+import usuarios.schemas as schemas
+from usuarios.service import AuthHandler, RequiresLoginException, eliminar_usuario
+
+models.Base.metadata.create_all(bind=engine)
+
+router = APIRouter()
+
+
+auth_handler = AuthHandler()
+
+templates = Jinja2Templates(directory="../templates/usuarios")
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+@router.get('/registrar', response_class=HTMLResponse)
+def registrar_usuario(request: Request):
+    return templates.TemplateResponse(request=request, name="registro.html")      
+
+@router.post('/registrar', response_class=HTMLResponse)
+def registrar_usuario(request: Request, 
+                      cedula: str = Form(...), 
+                      nombres: str = Form(...), 
+                      apellidos: str = Form(...), 
+                      direccion: str = Form(...), 
+                      nacimiento: datetime = Form(...), 
+                      correo: str = Form(...), 
+                      contraseña: str = Form(...), 
+                      tipo_id: int = Form(...), 
+                      db: Session = Depends(get_db)):
+
+    usuario = schemas.Usuario(
+        cedula=cedula, 
+        nombres=nombres, 
+        apellidos=apellidos, 
+        direccion=direccion, 
+        nacimiento=nacimiento, 
+        correo=correo, 
+        contraseña=contraseña, 
+        tipo_id=tipo_id
+    )
+    auth_handler.registrar_usuario(db=db, usuario=usuario)
+    return RedirectResponse(url='/', status_code=status.HTTP_303_SEE_OTHER)
+
+
+@router.get('/iniciar_sesion', response_class=HTMLResponse)
+def registrar_usuario(request: Request):
+    return templates.TemplateResponse(request=request, name="iniciarsesion.html")      
+
+@router.post('/iniciar_sesion')
+async def iniciar_sesion(request: Request, response: Response, cedula: str = Form(...), contraseña: str = Form(...),db: Session = Depends(get_db)) -> Token: 
+    usuario = await auth_handler.authenticate_user(db, cedula, contraseña)
+    try:
+        if usuario: 
+            nombre_completo = f'{usuario.nombres} {usuario.apellidos}'
+            atoken = auth_handler.create_access_token(data={'cedula': usuario.cedula, 'nombre_completo': nombre_completo, 'tipo_usuario_id': usuario.tipo_id})
+            if usuario.tipo_id == 1: 
+                response = templates.TemplateResponse("success.html", 
+                    {"request": request, "nombre_completo": nombre_completo, "success_msg": "¡Bienvenido de nuevo! ",
+                    "path_route": '/private', "path_msg": "Go to your private page!"})
+            elif usuario.tipo_id == 2: 
+                response = templates.TemplateResponse("success.html", 
+                    {"request": request, "nombre_completo": nombre_completo, "success_msg": "¡Bienvenido de nuevo! ",
+                    "path_route": '/private', "path_msg": "Go to your private page!"})
+            else: 
+                response = templates.TemplateResponse("success.html", 
+                    {"request": request, "nombre_completo": nombre_completo, "success_msg": "¡Bienvenido de nuevo! ",
+                    "path_route": '/private', "path_msg": "Go to your private page!"})
+            
+            response.set_cookie(key="Authorization", value= f"{atoken}", httponly=True)
+            return response
+        else:
+                return templates.TemplateResponse("error.html",
+                {"request": request, 'detail': 'Nombre de usuario o contraseña incorrecta', 'status_code': 404 })
+
+    except Exception as err:
+        return templates.TemplateResponse("error.html",
+            {"request": request, 'detail': 'Nombre de usuario o contraseña incorrecta', 'status_code': 401 })
+        
+
+@router.get("/private", response_class=HTMLResponse)
+async def private(request: Request, info=Depends(auth_handler.auth_wrapper)):
+    try:
+        return templates.TemplateResponse("private.html", {"request": request, "info": info})
+    except:
+        raise RequiresLoginException() 
+    
+
+@router.delete('/usuario/{cedula}', response_model=schemas.Usuario)
+def borrar_usuario(cedula : str, db: Session = Depends(get_db)): 
+    return eliminar_usuario(db=db, cedula=cedula)
+
+>>>>>>> 3de6dc9 (Avances David)

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Agregar el enlace al CSS personalizado -->
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+    {% block headblock %} {% endblock %}
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div>
+            <a href="/">
+                <img src="{{ url_for('static', path='Logo.png') }}" alt="Ícono ">
+            </a>
+        </div>
+        <div>
+            <input type="search" name="" id="">
+        </div>
+        <div>
+            <button>Invitar amigos</button>
+            <a href="">Cerrar sesión</a>
+        </div>
+    </header>
+    <nav>
+        <a href="/perfil">
+            <span>Perfil</span>
+        </a>
+        <a href="/productos">
+            <span>Productos</span>
+        </a>
+        <a href="/compras">
+            <span>Compras</span>
+        </a>
+    </nav>
+
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+    <footer>
+        <div>
+            <a href="/">
+                <img src="{{ url_for('static', path='Logo.png') }}" alt="Ícono">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

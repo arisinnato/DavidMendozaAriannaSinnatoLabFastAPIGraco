@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine
+from database import SessionLocal, engine #!aaaaaaa
 import tipo_compra.models as models 
 import tipo_compra.schemas as schemas
 import tipo_compra.service as service
@@ -19,6 +20,13 @@ def get_db():
 @router.get('')
 def home():
     return {"message":"yolo"}
+
+@router.post('', response_model=schemas.Tipo_Compra)
+def crear_tipo_compra(tipo_compra: schemas.Tipo_CompraCrear, db: Session = Depends(get_db)):
+    return service.crear_tipo_compra(db=db, tipo_compra=tipo_compra)
+@router.get('', response_model=list[schemas.Tipo_Compra])
+def listar_tipos_compras(db: Session = Depends(get_db)):
+    return service.listar_tipos_compras(db=db)
 
 @router.post('', response_model=schemas.Tipo_Compra)
 def crear_tipo_compra(tipo_compra: schemas.Tipo_CompraCrear, db: Session = Depends(get_db)):

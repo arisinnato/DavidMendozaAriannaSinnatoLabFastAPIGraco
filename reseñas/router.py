@@ -1,0 +1,45 @@
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from typing import Annotated
+from database import SessionLocal, engine
+import reseñas.models as models 
+import reseñas.schemas as schemas
+import reseñas.service as service
+
+models.Base.metadata.create_all(bind=engine)
+
+router = APIRouter()
+
+from usuarios.service import AuthHandler
+auth_handler = AuthHandler()
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.get('', response_model=list[schemas.Reseña])
+def listar_reseñas(db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)):
+    return service.listar_reseñas(db=db)
+
+@router.get('/producto/{id}', response_model=list[schemas.Reseña])
+def listar_reseñas(id: int, db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)):
+    return service.listar_reseñas_productos(db=db, id=id)
+
+@router.post('', response_model=schemas.Reseña)
+def crear_reseña(reseña: schemas.ReseñaCrear, db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)):
+    return service.crear_reseña(db=db, reseña=reseña)
+
+@router.get('/{id}', response_model=schemas.Reseña)
+def buscar_reseña(id : int, db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)): 
+    return service.buscar_reseña(db=db, id=id)
+
+@router.put('/{id}', response_model=schemas.Reseña)
+def modificar_reseña(id : int, reseña: schemas.ReseñaCrear, db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)): 
+    return service.modificar_reseña(db=db, id=id, reseña=reseña)
+
+@router.delete('/{id}', response_model=schemas.Reseña)
+def eliminar_reseña(id : int, db: Session = Depends(get_db), info=Depends(auth_handler.auth_wrapper)): 
+    return service.eliminar_reseña(db=db, id=id)

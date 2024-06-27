@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1>Lista de productos</h1> 
+<h2>Estos son tus productos {{ info.nombre_completo }}</h2>
+<section>
+    {% for esto in lista.data %}
+    <div>
+        <p>{{ esto.nombre }}</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<h1>Crear tipo de producto</h1>
+
+    <form action="/tipos_productos/crear" method="post">
+        <fieldset>
+            <legend>Datos tipo producto</legend>
+            <label for="nombre">
+                <span>Nombre:</span>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+            </label>
+    
+            <label for="descripcion">
+                <span>Descripción:</span>
+                <input type="text" name="descripcion" placeholder="Descripcion" required>
+            </label>
+
+            <select name="funcionalidad">
+                <option value=True>Funcional</option>
+                <option value=False>Decorativo</option>
+            </select>
+    
+            <button type="submit">Crear</button>
+        </fieldset>
+        <br>
+    </form>
+
+
+{% endblock %}

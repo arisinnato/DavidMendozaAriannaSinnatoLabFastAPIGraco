@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from database import Base
 import usuarios.models as usuarios
 import tipos_producto.models as tipos_producto
+import categorias.models as categorias
 
 class Producto(Base): 
     __tablename__  = "productos"
@@ -23,4 +24,11 @@ class Producto(Base):
     tipo_producto = relationship('Tipo_Producto', back_populates='productos')
     calificaciones = relationship('Calificacion', back_populates='producto')
     compras = relationship('Compra', back_populates='producto')
+    categoria_id = Column(Integer, ForeignKey(categorias.Categoria.id))
 
+    usuario = relationship('Usuario', back_populates='productos')
+    tipo_producto = relationship('Tipo_Producto', back_populates='productos')
+    categoria = relationship('Categoria', back_populates='productos')
+    calificaciones = relationship('Calificacion', back_populates='producto')
+    reseñas = relationship('Reseña', back_populates='producto')
+    compras = relationship('Compra', back_populates='producto')
