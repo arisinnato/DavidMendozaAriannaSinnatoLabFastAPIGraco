@@ -21,5 +21,5 @@ class Compra(Base):
     producto = relationship('Producto', back_populates='compras')
     tipo_compra = relationship('Tipo_Compra', back_populates='compras')
     estado_compra = relationship('Estado_Compra', back_populates='compras')
-    # caracteristicas = relationship('Caracteristica', back_populates='encargo')
-    # cotizaciones = relationship('Cotizacion', back_populates='compra')
+    caracteristicas = relationship('Caracteristica', back_populates='encargo')
+    cotizaciones = relationship('Cotizacion', back_populates='compra')

@@ -8,7 +8,7 @@ class CompraBase(BaseModel):
     cliente_cedula: str
     producto_id: int
     tipo_compra_id: int
-    # estado_compra_id: Union[int, None] = None
+    estado_compra_id: Union[int, None] = None
 
 class CompraCrear(CompraBase):
     pass

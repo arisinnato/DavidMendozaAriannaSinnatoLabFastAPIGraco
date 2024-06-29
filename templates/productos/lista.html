@@ -1,0 +1,77 @@
+{% extends "base.html" %} 
+
+{% block headblock %}
+<script src="{{ url_for('static', path='js/index.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+    {% if artesano %}
+        <h2>Productos del artesano {{ nombre }}</h2>
+        <details>
+            <summary>Crear producto</summary>
+            <form action="/productos" method="post">
+                <fieldset>
+                    <legend>Crear productos</legend>
+                    <label for="nombre">
+                        <span>Nombre</span>
+                        <input type="text" name="nombre" id="nombre" required>
+                    </label>
+                    <label for="descripcion">
+                        <span>Descripción</span>
+                        <input type="text" name="descripcion" id="descripcion">
+                    </label>
+                    <label for="altura_cm">
+                        <span>Altura (en centímetros)</span>
+                        <input type="number" name="altura_cm" id="altura_cm" min="0.5" required>
+                    </label>
+                    <label for="anchura_cm">
+                        <span>Anchura (en centímetros)</span>
+                        <input type="number" name="anchura_cm" id="anchura_cm" min="0.5" required>
+                    </label>
+                    <label for="profundidad_cm">
+                        <span>Profundidad (en centímetros)</span>
+                        <input type="number" name="profundidad_cm" id="profundidad_cm" min="0.5" required>
+                    </label>
+                    <label for="imagen">
+                        <span>Imagen</span>
+                        <div>
+                            <input type="file" name="extraccion" id="extraccion" accept="image/*" oninput="mostrar_imagen();" required>
+                            <button type="button" onclick="deimaginar();">Quitar imagen</button>
+                        </div>
+                        <img id="externa" src="" alt="Si ves esto, no tienes una imagen">
+                        <input type="hidden" name="imagen" id="imagen" required>
+                    </label>
+                    <label for="categoria">
+                        <span>Categoría</span>
+                        <select name="categoria" id="categoria" required>
+                            {% for esto in categorias %}
+                            <option value="{{ esto.id }}">{{ esto.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <label for="tipo">
+                        <span>Tipo</span>
+                        <select name="tipo" id="tipo" required>
+                            {% for esto in tipos %}
+                            <option value="{{ esto.id }}">{{ esto.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <label for="peso_gramo">
+                        <span>Peso (en gramos)</span>
+                        <input type="number" name="peso_gramo" id="peso_gramo" min="0.5" required>
+                    </label>
+                    <button type="submit">Crear producto</button>
+                </fieldset>
+            </form>
+        </details>
+    {% endif %}
+    {% for producto in productos %}
+    <div>
+        <img src=""> <!-- img vacía mientras se ve como implementarlo -->
+        <h3> {{ producto.nombre }}</h3>
+        <button onclick="location.href='/productos/{{ producto.id }}'">Ver producto</button>
+    </div>
+    {% endfor %}
+    
+{% endblock %}

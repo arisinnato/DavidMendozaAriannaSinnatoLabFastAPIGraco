@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 from typing import Union
 
-class Tipo_UsuarioBase(BaseModel):
+class el_Tipo_de_Usuario_Base(BaseModel):
     nombre: str
     descripcion: Union[str, None] = None
 
-class Tipo_UsuarioCrear(Tipo_UsuarioBase):
+class el_Tipo_de_Usuario_ha_Crear(el_Tipo_de_Usuario_Base):
     pass
 
-class Tipo_Usuario(Tipo_UsuarioBase):
+class Tipo_Usuario(el_Tipo_de_Usuario_Base):
     id: int
 
     class Config:

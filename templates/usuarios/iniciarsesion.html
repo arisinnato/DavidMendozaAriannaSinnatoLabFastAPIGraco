@@ -4,41 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Agregar el enlace al CSS personalizado -->
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/templates/home_no_logeado.html">Artesanías</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/templates/usuarios/registro.html">Registrar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/templates/usuarios/iniciarsesion.html">Iniciar Sesión</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
     <form action="/iniciar_sesion" method="post">
-        <div class="login-card">
-            <h2>Login</h2>
-            <h3>Enter your credentials</h3>
-            <form class="login-form">
-              <input type="text" placeholder="Username" />
-              <input type="password" placeholder="Password" />
-              <button type="submit">Iniciar sesión</button>
-              <p>
-                  ¿No tienes ninguna cuenta? 
-                  <a href="templates/usuarios/registro.html">¡Regístrate!</a>
-              </p>
-            </form>
-        </div>
+        <fieldset>
+            <legend>Inicia sesión</legend>
+            <label for="cedula">
+                <span>Cédula</span>
+                <input type="text" name="cedula" placeholder="Cédula" required>
+            </label>
+    
+            <label for="contraseña">
+                <span>Contraseña</span>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
+            </label>
+    
+            <button type="submit">Iniciar sesión</button>
+            <p>
+                ¿No tienes ninguna cuenta? 
+                <a href="/registrar">¡Regístrate!</a>
+            </p>
+        </fieldset>
         <br>
     </form>
 </body>

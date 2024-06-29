@@ -1,0 +1,16 @@
+from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+from database import Base
+import productos.models as productos
+
+class Reseña(Base): 
+    __tablename__  = "reseñas"
+    
+    id = Column(Integer, primary_key=True)
+    invencion = Column(DateTime, index=True)
+    inventor = Column(String, index=True)
+    años_produccion = Column(Integer, index=True)
+    producto_id = Column(Integer, ForeignKey(productos.Producto.id))
+
+    producto = relationship('Producto', back_populates='reseñas')
+    anecdotas = relationship('Anecdota', back_populates='reseña')

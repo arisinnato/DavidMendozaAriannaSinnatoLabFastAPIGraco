@@ -3,9 +3,7 @@ from typing import Union
 from datetime import datetime
 from email_validator import validate_email, EmailNotValidError
 
-
-
-class UsuarioBase(BaseModel):
+class el_Usuario_Base(BaseModel):
     cedula: str
     nombres: str
     apellidos: str
@@ -15,7 +13,6 @@ class UsuarioBase(BaseModel):
     contraseña: str
     tipo_id: int
 
-
     @field_validator('correo')
     def validacion(cls, correo): 
         try: 
@@ -23,13 +20,13 @@ class UsuarioBase(BaseModel):
             correo = validado.email
             return correo
         except EmailNotValidError as e: 
-            raise ValueError('El email no es válido')
+            raise ValueError('email invalido')
 
 
-class UsuarioCrear(UsuarioBase):
+class Usuario_para_Crear(el_Usuario_Base):
     pass
 
-class Usuario(UsuarioBase):
+class Usuario(el_Usuario_Base):
 
     class Config:
         orm_mode = True

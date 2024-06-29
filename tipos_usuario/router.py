@@ -17,18 +17,34 @@ def get_db():
     finally:
         db.close()
 
+"""@router.get('', response_model=list[schemas.Tipo_Usuario])
+def listar_tipos_usuarios(db: Session = Depends(get_db)):
+    return service.listar_tipos_usuarios(db=db)
+
+@router.post('', response_model=Respuesta[schemas.Tipo_Usuario])
+def crear_un_tipo_de_usuario(tipo_usuario: schemas.Tipo_UsuarioCrear, db: Session = Depends(get_db)):
+    return service.crear_un_tipo_de_usuario(db=db, tipo_usuario=tipo_usuario)
+
+@router.get('/{id}', response_model=schemas.Tipo_Usuario)
+def buscar_un_tipo_de_usuario(id : int, db: Session = Depends(get_db)): 
+    return service.buscar_un_tipo_de_usuario(db=db, id=id)
+
+@router.delete('/{id}', response_model=schemas.Tipo_Usuario)
+def eliminar_un_tipo_de_usuario(id : int, db: Session = Depends(get_db)): 
+    return service.eliminar_un_tipo_de_usuario(db=db, id=id)"""
+
 @router.get('', response_model=list[schemas.Tipo_Usuario])
 def listar_tipos_usuarios(db: Session = Depends(get_db)):
     return service.listar_tipos_usuarios(db=db)
 
 @router.post('', response_model=Respuesta[schemas.Tipo_Usuario])
-def crear_tipo_usuario(tipo_usuario: schemas.Tipo_UsuarioCrear, db: Session = Depends(get_db)):
-    return service.crear_tipo_usuario(db=db, tipo_usuario=tipo_usuario)
+def crear_un_tipo_de_usuario(tipo_usuario: schemas.el_Tipo_de_Usuario_ha_Crear, db: Session = Depends(get_db)):
+    return service.crear_un_tipo_de_usuario(db=db, tipo_usuario=tipo_usuario)
 
 @router.get('/{id}', response_model=schemas.Tipo_Usuario)
-def buscar_tipo_usuario(id : int, db: Session = Depends(get_db)): 
-    return service.buscar_tipo_usuario(db=db, id=id)
+def buscar_un_tipo_de_usuario(id : int, db: Session = Depends(get_db)): 
+    return service.buscar_un_tipo_de_usuario(db=db, id=id)
 
 @router.delete('/{id}', response_model=schemas.Tipo_Usuario)
-def eliminar_tipo_usuario(id : int, db: Session = Depends(get_db)): 
-    return service.eliminar_tipo_usuario(db=db, id=id)
+def eliminar_un_tipo_de_usuario(id : int, db: Session = Depends(get_db)): 
+    return service.eliminar_un_tipo_de_usuario(db=db, id=id)

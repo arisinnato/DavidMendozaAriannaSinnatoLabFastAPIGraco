@@ -12,11 +12,14 @@ def crear_tipo_compra(db: Session, tipo_compra: schemas.Tipo_CompraCrear):
     db.refresh(db_tipo_compra)
     return db_tipo_compra
 
+def listar_tipos_compras(db: Session): 
+    return db.query(models.Tipo_Compra).all()
+
 def get_tipo_compra(db: Session, id: int):
-    returned = db.query(models.Categoria).filter(models.Categoria.id == id).first()
+    returned = db.query(models.Tipo_Compra).filter(models.Tipo_Compra.id == id).first()
 
     if returned == None:
         return Respuesta[schemas.Tipo_Compra](ok=False, mensaje='Tipo de compra no encontrado')
 
-    tipo_compra = schemas.Categoria(nombre=returned.nombre, descripcion=returned.descripcion, id=returned.id) 
+    tipo_compra = schemas.Tipo_Compra(nombre=returned.nombre, descripcion=returned.descripcion, id=returned.id) 
     return Respuesta[schemas.Tipo_Compra](ok=True, mensaje='Tipo de compra no encontrado', data=tipo_compra)

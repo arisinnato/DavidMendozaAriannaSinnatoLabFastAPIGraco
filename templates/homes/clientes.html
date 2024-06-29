@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1>Artesanos</h1>
+<section>
+    {% for esto in lista %}
+    <div>
+        <p>{{ esto.nombres }} {{ esto.apellidos }}</p>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

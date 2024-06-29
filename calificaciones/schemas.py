@@ -1,6 +1,6 @@
 from pydantic import BaseModel, field_validator
 from typing import Union
-class CalificacionBase(BaseModel):
+class Calificacion_Base(BaseModel):
     titulo: str
     comentario: str
     estrellas: int
@@ -10,16 +10,16 @@ class CalificacionBase(BaseModel):
 
     @field_validator('estrellas')
     def verificar_estrellas(cls, estrellas): 
-        if estrellas > 5: 
-            raise ValueError('las estrellas maximas son de 5')
+        if estrellas > 10: 
+            raise ValueError('las estrellas maximas son de 10')
         if estrellas < 0: 
             raise ValueError('las estrellas minimas son de 0')
         return estrellas
 
-class CalificacionCrear(CalificacionBase):
+class Calificacion_a_Crear(Calificacion_Base):
     pass
 
-class Calificacion(CalificacionBase):
+class Calificacion(Calificacion_Base):
     id: int
 
     class Config:
